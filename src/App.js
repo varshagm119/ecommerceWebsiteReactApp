@@ -2,6 +2,8 @@ import "./App.css";
 import {  Navbar, Container, Nav } from "react-bootstrap";
 
 import Product from "./Components/Products/Product";
+import Cart from "./Components/Cart/Cart";
+
 
 function App() {
   return (
@@ -16,9 +18,13 @@ function App() {
               <Nav.Link href="#home">STORE</Nav.Link>
               <Nav.Link href="#home">ABOUT</Nav.Link>
             </Nav>
+            <Nav>
+             <Cart />
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
       <Product />
     </div>
   );
