@@ -1,32 +1,28 @@
 import "./App.css";
-import {  Navbar, Container, Nav } from "react-bootstrap";
-
 import Product from "./Components/Products/Product";
-import Cart from "./Components/Cart/Cart";
+import Header from "./Components/Header/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Components/Pages/Home";
+import Store from "./Components/Pages/Store";
 
 
 function App() {
   return (
-    <div>
-      <Navbar bg="dark" variant="dark" expand="sm">
-        <Container>
-          <Navbar.Brand href="/">Music Collection</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">HOME</Nav.Link>
-              <Nav.Link href="#home">STORE</Nav.Link>
-              <Nav.Link href="#home">ABOUT</Nav.Link>
-            </Nav>
-            <Nav>
-             <Cart />
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <BrowserRouter>
+      <Header />
+{/* 
+      <Routes>
+      <Route path="/" exact>
+        <Home />
+      </Route>
 
+      <Route path="/store" exact>
+        <Store />
+      </Route>
+      </Routes> */}
+      <Home />
       <Product />
-    </div>
+    </BrowserRouter>
   );
 }
 

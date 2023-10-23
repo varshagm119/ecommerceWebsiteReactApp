@@ -1,48 +1,10 @@
 import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import SingleProduct from "./SingleProduct";
+import {  Col, Container, Row } from "react-bootstrap";
+import { CartState } from "../../Context/Context";
 
 const Product = () => {
-  const productsArr = [
-    {
-        id:1,
-      title: "Colors",
-
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    },
-
-    {
-        id:2,
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    },
-
-    {
-        id:3,
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        },
-        
-        {
-        id:4,
-        title: 'Blue Color',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-        
-        }
-  ];
+  const {state: {products}} = CartState();
 
   return <div>
 
@@ -51,22 +13,12 @@ const Product = () => {
     </div>
    
     <Container className="mt-3">
-        <Row className="justify-content-md-center">
-        
-                {productsArr.map(product => {
-                    return(
-                        <Col xs={6}>
-                        <Card key={product.id} className="mb-4" style={{width: '18rem'}}>
-                            <Card.Header>{product.title}</Card.Header>
-                            <Card.Img src={product.imageUrl}  variant="top"/>
-                            <Card.Body>
-                                <Card.Text>${product.price}</Card.Text>
-                                <Button variant="primary">ADD TO CART</Button>
-                            </Card.Body>
-                        </Card> </Col>
-                    );
-                })}
-        
+        <Row className="justify-content-md-center g-3" md={2} xs={1} lg={3}>
+          {products.map(item => (
+            <Col key={item.id}> 
+              <SingleProduct item={item} key={item.id} /> 
+            </Col>
+          ))}
         </Row>
     </Container>
   </div>;
