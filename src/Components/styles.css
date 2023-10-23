@@ -99,4 +99,9 @@
     .products {
       width: 100%;
     }
+
+
+    .custom-dropdown .dropdown-menu {
+        right: 0; /* Adjust this value as needed */
+      }
   }

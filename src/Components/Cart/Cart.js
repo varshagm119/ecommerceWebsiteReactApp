@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, Badge, Button } from "react-bootstrap";
+import { Dropdown, Badge, Button, Form } from "react-bootstrap";
 import {FiShoppingCart} from 'react-icons/fi';
 import CartItems from "./CartItems";
 import { AiFillDelete } from "react-icons/ai";
@@ -11,12 +11,12 @@ const Cart = () => {
     const {state: {cart}, dispatch} = CartState();
     return(
         <>
-         <Dropdown>
+         <Dropdown className="custom-dropdown" >
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   <FiShoppingCart color="white" fontSize='25px'/>
                   <Badge>{cart.length}</Badge>
                 </Dropdown.Toggle>
-                <Dropdown.Menu style={{minWidth: 370}}>
+                <Dropdown.Menu style={{minWidth: 350}}>
                   {cart.length > 0 ? (
                     <>
                     {cart.map((prod) => (
@@ -30,6 +30,10 @@ const Cart = () => {
                           <span>{prod.title}</span>
                           <span>₹ {prod.price}</span>
                         </div>
+                        
+                        <span>
+                        <Form.Control type="number"  size="sm" ></Form.Control></span>
+                        
                         <AiFillDelete
                           fontSize="20px"
                           style={{ cursor: "pointer" }}
@@ -42,7 +46,7 @@ const Cart = () => {
                         />
                       </span>
                     ))}
-                    <Link to="/cart">
+                    <Link to="/store">
                       <Button style={{ width: "95%", margin: "0 10px" }}>
                         Go To Cart
                       </Button>

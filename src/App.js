@@ -1,28 +1,21 @@
 import "./App.css";
-import Product from "./Components/Products/Product";
 import Header from "./Components/Header/Header";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Routes, Route,  } from "react-router-dom";
 import Home from "./Components/Pages/Home";
 import Store from "./Components/Pages/Store";
+import About from "./Components/Pages/About";
 
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
       <Header />
-{/* 
       <Routes>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-
-      <Route path="/store" exact>
-        <Store />
-      </Route>
-      </Routes> */}
-      <Home />
-      <Product />
-    </BrowserRouter>
+      <Route exact path="/" element={<Home />} />
+      <Route  path="/store" element={<Store />} />
+      <Route  path="/about" element={<About />} />
+      </Routes>
+    </div>
   );
 }
 
