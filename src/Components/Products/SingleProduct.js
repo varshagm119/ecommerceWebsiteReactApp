@@ -27,7 +27,7 @@ const SingleProduct = ({item}) => {
             onClick={() => {
               dispatch({
                 type: "REMOVE_FROM_CART",
-                payload: item,
+                payload: item
               });
             }}
           >
@@ -38,7 +38,7 @@ const SingleProduct = ({item}) => {
             onClick={() => {
               dispatch({
                 type: "ADD_TO_CART",
-                payload: item,
+                payload: item
               });
             }}
           >
