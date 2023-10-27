@@ -6,7 +6,7 @@ const ContactUs = () => {
     const nameRef = useRef('');
     const phoneRef = useRef('');
     const submitHandler = async(e) => {
-        e.preventDefault();
+        //e.preventDefault();
         const userDetails = {
             email: emailRef.current.value,
             name: nameRef.current.value,

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import { CartState } from "../../Context/Context";
+import { Link } from "react-router-dom";
 
 const SingleProduct = ({item}) => {
   const {
@@ -9,7 +10,8 @@ const SingleProduct = ({item}) => {
   } = CartState();
 
   return (
-    <Card className="h-100">
+    <Link to={`/product/${item.title}`}>
+      <Card className="h-100">
       <Card.Img
         variant="top"
         src={item.imageUrl}
@@ -47,6 +49,7 @@ const SingleProduct = ({item}) => {
         )}
       </Card.Body>
     </Card>
+    </Link>
   );
 };
 

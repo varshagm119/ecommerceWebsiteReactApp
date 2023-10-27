@@ -5,6 +5,7 @@ import Home from "./Components/Pages/Home";
 import Store from "./Components/Pages/Store";
 import About from "./Components/Pages/About";
 import ContactUs from "./Components/Pages/ContactUs";
+import ProductDetails from "./Components/Pages/ProductDetails";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route  path="/store" element={<Store />} />
       <Route  path="/about" element={<About />} />
       <Route path="/contactus" element={<ContactUs />} />
+      <Route path="/product/:productId" element={<ProductDetails />} />
       </Routes>
     </div>
   );
