@@ -12,14 +12,14 @@ export const cartReducer = (state, action) => {
     case "Edit":
       const existingCartIndex = state.cart.findIndex((item) => item.id === action.payload.product.id);
       const existingCartItem = state.cart[existingCartIndex];
-      let updatedCart = [...state.cart]
+      let updatedCart = [...state.cart], amt= action.payload.product.price;
       if(existingCartItem){
-        updatedCart[existingCartIndex] = {...existingCartItem, qty:  action.payload.qty};
+         amt = existingCartItem.price * action.payload.qty;
+        updatedCart[existingCartIndex] = {...existingCartItem, qty:  action.payload.qty, billAmt: amt};
       }
       
-      console.log(updatedCart)
-
-      return {...state, cart: updatedCart};
+      
+      return {...state, cart: updatedCart, totalAmount: state.totalAmount+amt};
 
     default:
       return state;

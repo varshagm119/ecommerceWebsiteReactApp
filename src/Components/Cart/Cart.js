@@ -8,7 +8,7 @@ import "../styles.css";
 
 const Cart = () => {
   const {
-    state: { cart },
+    state: { cart, totalAmount },
     dispatch,
   } = CartState();
 //console.log(cart)
@@ -23,6 +23,8 @@ const Cart = () => {
   //   });
   //   console.log(prod);
   // };
+
+  
 
   return (
     <>
@@ -73,9 +75,12 @@ const Cart = () => {
                   />
                 </span>
               ))}
+
+             <span>${totalAmount}</span>   
+
               <Link to="/store">
                 <Button style={{ width: "95%", margin: "0 10px" }}>
-                  Go To Cart
+                  purchase
                 </Button>
               </Link>
             </>
