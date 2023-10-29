@@ -10,14 +10,16 @@ const SingleProduct = ({item}) => {
   } = CartState();
 
   return (
-    <Link to={`/store/${item.title}`}>
-      <Card className="h-100">
+    <Card className="h-100">
+      <Link to={`/store/${item.title}`}>
       <Card.Img
         variant="top"
         src={item.imageUrl}
         height="200px"
         style={{ objectFit: "cover" }}
       />
+        </Link>
+
       <Card.Body className="d-flex flex-column">
         <Card.Title className="d-flex justify-content-between align-items-baseline mb-6">
           <span className="fs-2">{item.title}</span>
@@ -49,7 +51,7 @@ const SingleProduct = ({item}) => {
         )}
       </Card.Body>
     </Card>
-    </Link>
+    
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, Badge, Button, Form } from "react-bootstrap";
 import { FiShoppingCart } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
@@ -24,7 +24,7 @@ const Cart = () => {
   //   console.log(prod);
   // };
 
-  
+  const [showDiv, setShowDiv] = useState(false);
 
   return (
     <>
@@ -76,7 +76,7 @@ const Cart = () => {
                 </span>
               ))}
 
-             <span>${totalAmount}</span>   
+             {/* <span>${totalAmount}</span> */}
 
               <Link to="/store">
                 <Button style={{ width: "95%", margin: "0 10px" }}>

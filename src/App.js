@@ -12,6 +12,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import Login from "./Components/Pages/Login";
 import Signup from "./Components/Pages/Signup";
 import { UserAuthContextProvider } from "./Context/UserAuthContext";
+import UpdatePassword from "./Components/Pages/UpdatePassword";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Routes>
       <Route exact path="/" element={<Login />} />
       <Route exact path="/signup" element={<Signup />} />
+      <Route path="/updatepwd" element={<UpdatePassword/>} />
       <Route  path="/home" element={<Home />} />
       <Route  path="/store" element={<ProtectedRoute> <Store /></ProtectedRoute>} />
       <Route  path="/about" element={<About />} />
