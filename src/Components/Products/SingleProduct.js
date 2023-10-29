@@ -10,7 +10,7 @@ const SingleProduct = ({item}) => {
   } = CartState();
 
   return (
-    <Link to={`/product/${item.title}`}>
+    <Link to={`/store/${item.title}`}>
       <Card className="h-100">
       <Card.Img
         variant="top"

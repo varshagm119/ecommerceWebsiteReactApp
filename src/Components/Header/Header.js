@@ -1,9 +1,18 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, NavLink, Button } from "react-bootstrap";
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
+import { useUserAuth } from "../../Context/UserAuthContext";
 
 const Header = () => {
+  const {user, logOut} = useUserAuth();
+  const logoutHandle = async() =>{
+    try{
+      await logOut()
+    }catch(err){
+      console.log(err.message)
+    }
+  }
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="sm">
@@ -37,7 +46,10 @@ const Header = () => {
             </Nav>
             
             <Nav className="me-auto">
-              <Cart />
+             {user && <Cart />}
+            </Nav>
+            <Nav>
+              {user && <Button onClick={logoutHandle}>Log out</Button>}
             </Nav>
           </Navbar.Collapse>
         </Container>

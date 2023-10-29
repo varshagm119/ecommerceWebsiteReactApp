@@ -104,4 +104,15 @@
     .custom-dropdown .dropdown-menu {
         right: 0; /* Adjust this value as needed */
       }
+
+
+      .loginBox {
+        background-color: #fafafa;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        align-items: center;
+        height: 100vh;
+      }
   }
