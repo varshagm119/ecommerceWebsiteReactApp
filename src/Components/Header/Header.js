@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav, NavLink, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
 import { useUserAuth } from "../../Context/UserAuthContext";
@@ -47,6 +47,9 @@ const Header = () => {
             
             <Nav className="me-auto">
              {user && <Cart />}
+            </Nav>
+            <Nav>
+              {!user && <Link to='/' className="nav-link">Log in</Link>}
             </Nav>
             <Nav>
               {user && <Button onClick={logoutHandle}>Log out</Button>}

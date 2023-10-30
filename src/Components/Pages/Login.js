@@ -68,9 +68,7 @@ const Login = () => {
       <div className="p-4 box mt-3 text-center">
         Don't have an account? <Link to='/signup'>Sign up</Link>
       </div>
-      <div className="p-4 box mt-3 text-center">
-        <Link to='/updatepwd'>Change Password</Link>
-      </div>
+      
     </div>
   );
 };
