@@ -27,21 +27,16 @@ const SingleProduct = ({item}) => {
         </Card.Title>
         {cart.some((p) => p.id === item.id) ? (
           <Button
-            variant="danger"
-            onClick={() => {
-              dispatch({
-                type: "REMOVE_FROM_CART",
-                payload: item
-              });
-            }}
+           variant="light"
+           disabled
           >
-            Remove
+            Added to cart
           </Button>
         ) : (
           <Button
             onClick={() => {
               dispatch({
-                type: "ADD_TO_CART",
+                type: "ADD",
                 payload: item
               });
             }}

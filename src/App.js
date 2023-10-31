@@ -21,15 +21,14 @@ function App() {
       <UserAuthContextProvider>
       <Header />
       <Routes>
-      <Route exact path="/" element={<Login />} />
+      <Route exact path="/login" element={<Login />} />
       <Route exact path="/signup" element={<Signup />} />
       <Route path="/updatepwd" element={<UpdatePassword/>} />
-      <Route  path="/home" element={<Home />} />
+      <Route  path="/" element={<Home />} />
       <Route  path="/store" element={<ProtectedRoute> <Store /></ProtectedRoute>} />
       <Route  path="/about" element={<About />} />
       <Route path="/contactus" element={<ContactUs />} />
       <Route path="/store/:productId" element={<ProductDetails />} />
-      <Route path="/store/:productId/comments" element={<Comments />} />
       </Routes>
       </UserAuthContextProvider>
     </div>

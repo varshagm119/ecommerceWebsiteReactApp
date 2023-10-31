@@ -1,4 +1,6 @@
 // Import the functions you need from the SDKs you need
+
+import {getFirestore} from 'firebase/firestore/lite'; 
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -17,5 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const fs = getFirestore(app);
 export const auth = getAuth(app);
 export default app;

@@ -1,30 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dropdown, Badge, Button, Form } from "react-bootstrap";
 import { FiShoppingCart } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { CartState } from "../../Context/Context";
+import { useUserAuth } from "../../Context/UserAuthContext";
+import { fs } from "../../Firebase";
+import { collection, addDoc } from "firebase/firestore/lite";
 import "../styles.css";
 
 const Cart = () => {
+  const [totalAmtExpose, setTotalAmtExpose] = useState(false);
+  const { user, logOut } = useUserAuth();
+  const uid = "User_" + user.uid;
   const {
     state: { cart, totalAmount },
     dispatch,
   } = CartState();
-//console.log(cart)
-  // const updateQtyHandler = (prod, e) => {
-  //   const newQty = parseInt(e.target.value);
-  //   dispatch({
-  //     type: "ADD_TO_CART",
-  //     payload: {
-  //       product: prod,
-  //       qty: newQty,
-  //     },
-  //   });
-  //   console.log(prod);
-  // };
 
-  const [showDiv, setShowDiv] = useState(false);
+  // const [showDiv, setShowDiv] = useState(false);
+  // let individualProduct;
+  const addFirestore = () => {
+    setTotalAmtExpose(true);
+    cart.map(async (prod) => {
+      const userCartRef = collection(fs, uid);
+      await addDoc(userCartRef, prod);
+    });
+  };
 
   return (
     <>
@@ -48,13 +50,37 @@ const Cart = () => {
                     <span>₹ {prod.price}</span>
                   </div>
 
+                  <div>
+                    <Button
+                      variant="outline-dark"
+                      onClick={() => dispatch({ type: "REMOVE", payload: {
+                        product: prod,
+                        qty: 1,
+                      }})}
+                    >
+                      -
+                    </Button>
+                    <span>{prod.qty}</span>
+                    <Button
+                      variant="outline-dark"
+                      onClick={() => dispatch({ type: "EDIT", payload: {
+                        product: prod,
+                        qty: 1,
+                      }, })}
+                    >
+                      +
+                    </Button>
+                  </div>
                   <span style={{ width: 50 }}>
                     <Form.Control
                       type="number"
                       onChange={(e) =>
                         dispatch({
-                          type: "Edit",
-                          payload: { product: prod, qty: parseInt(e.target.value) },
+                          type: "EDIT",
+                          payload: {
+                            product: prod,
+                            qty: parseInt(e.target.value),
+                          },
                         })
                       }
                       min={1}
@@ -68,18 +94,21 @@ const Cart = () => {
                     style={{ cursor: "pointer" }}
                     onClick={() =>
                       dispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: prod,
+                        type: "Remove_from_cart",
+                        payload: {product:prod},
                       })
                     }
                   />
                 </span>
               ))}
 
-             {/* <span>${totalAmount}</span> */}
+              {totalAmtExpose && <span>${totalAmount}</span>}
 
               <Link to="/store">
-                <Button style={{ width: "95%", margin: "0 10px" }}>
+                <Button
+                  style={{ width: "95%", margin: "0 10px" }}
+                  onClick={addFirestore}
+                >
                   purchase
                 </Button>
               </Link>

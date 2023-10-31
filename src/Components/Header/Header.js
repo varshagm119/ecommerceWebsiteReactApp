@@ -24,7 +24,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Item>
-                <Link to="/home" className="nav-link">
+                <Link to="/" className="nav-link">
                   HOME
                 </Link>
               </Nav.Item>
@@ -49,7 +49,7 @@ const Header = () => {
              {user && <Cart />}
             </Nav>
             <Nav>
-              {!user && <Link to='/' className="nav-link">Log in</Link>}
+              {!user && <Link to='/login' className="nav-link">Log in</Link>}
             </Nav>
             <Nav>
               {user && <Button onClick={logoutHandle}>Log out</Button>}
