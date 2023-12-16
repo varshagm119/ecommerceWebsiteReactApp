@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Dropdown, Badge, Button, Form } from "react-bootstrap";
 import { FiShoppingCart } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
@@ -11,7 +11,7 @@ import "../styles.css";
 
 const Cart = () => {
   const [totalAmtExpose, setTotalAmtExpose] = useState(false);
-  const { user, logOut } = useUserAuth();
+  const { user } = useUserAuth();
   const uid = "User_" + user.uid;
   const {
     state: { cart, totalAmount },
@@ -71,7 +71,7 @@ const Cart = () => {
                       +
                     </Button>
                   </div>
-                  <span style={{ width: 50 }}>
+                  {/* <span style={{ width: 50 }}>
                     <Form.Control
                       type="number"
                       onChange={(e) =>
@@ -87,7 +87,7 @@ const Cart = () => {
                       size="sm"
                       defaultValue={1}
                     ></Form.Control>
-                  </span>
+                  </span> */}
 
                   <AiFillDelete
                     fontSize="20px"

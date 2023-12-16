@@ -1,44 +1,49 @@
 import React, { useState } from "react";
 import { Alert, Button, Form, FormGroup, FormLabel } from "react-bootstrap";
-import classes from '../Auth/AuthForm.module.css'
+import classes from "../Auth/AuthForm.module.css";
 import GoogleButton from "react-google-button";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../Context/UserAuthContext";
-
 
 const Login = () => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {logIn, googleSignIn} = useUserAuth();
+  const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    try{
-        await logIn(email,password);
-        navigate('/store');
+    setError("");
+    try {
+      await logIn(email, password);
+      navigate("/store");
+    } catch (err) {
+      setError(err.message);
     }
-    catch(err){
-        setError(err.message);
-    }
-  }
+  };
 
-  const handleGoogleSignIn = async(e) => {
+  const handleGoogleSignIn = async (e) => {
     e.preventDefault();
-    setError('');
-    try{
-        await googleSignIn();
-        navigate('/store');
-    }
-    catch(err){}
-  }
-
+    setError("");
+    try {
+      await googleSignIn();
+      navigate("/store");
+    } catch (err) {}
+  };
 
   return (
     <div className="loginBox">
-      <div className="p-4 box">
+      <div
+        className="p-4 box m-10"
+        style={{
+          width: "600px",
+          display: "flex",
+          flexDirection: "column",
+          // justifyContent: "center",
+          //alignItems: "center",
+        }}
+      >
         <h2 className="mb-3">Firebase Auth Login</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
@@ -57,18 +62,29 @@ const Login = () => {
             />
           </FormGroup>
           <div className="d-grid gap-2">
-            <Button variant="primary" type="submit">Log In</Button>
+            <Button variant="primary" type="submit">
+              Log In
+            </Button>
           </div>
         </Form>
         <hr />
         <div>
-            <GoogleButton className="g-btn" type="dark" onClick={handleGoogleSignIn} />
+          <GoogleButton
+            className="g-btn"
+            type="dark"
+            onClick={handleGoogleSignIn}
+          />
         </div>
       </div>
-      <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to='/signup'>Sign up</Link>
+      <div className="p-4 box mt-3 text-center"  style={{
+          width: "600px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        Don't have an account? <Link to="/signup">Sign up</Link>
       </div>
-      
     </div>
   );
 };

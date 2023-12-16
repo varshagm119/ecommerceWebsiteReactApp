@@ -6,8 +6,6 @@ import Store from "./Components/Pages/Store";
 import About from "./Components/Pages/About";
 import ContactUs from "./Components/Pages/ContactUs";
 import ProductDetails from "./Components/Pages/ProductDetails";
-import Comments from "./Components/Comments/Comments";
-import AuthPage from "./Components/Pages/AuthPage";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Login from "./Components/Pages/Login";
 import Signup from "./Components/Pages/Signup";
